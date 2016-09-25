@@ -12,15 +12,13 @@ $.validate({
         if(registerbtn.val() !== processingStr){
             // feedback for user.
             registerbtn.toggleClass('btn-info btn-success');
-            //registerbtn.val(processingStr);
+            // registerbtn.val(processingStr);
 
             doRegistration();
         }
-        else{
-            // ignore request.
-        }
         
-        return false; // stop the submission of the form
+        // stop the submission of the form
+        return false; 
     }
 });
 
@@ -52,7 +50,8 @@ function doRegistration() {
         url: '/api/register', 
         type: 'POST', 
         contentType: 'application/json', 
-        data: JSON.stringify(data)
+        data: JSON.stringify(data),
+        success: onRegistered
     });
  
 }
@@ -60,4 +59,5 @@ function doRegistration() {
 // on succesful registration, go to confirmation page
 function onRegistered(res){
     console.log("onRegistered", res);
+    window.location.href = "./confirmation.html";
 }
