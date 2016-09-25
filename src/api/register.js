@@ -1,13 +1,11 @@
 import { User } from '../models/user';
+import _ from 'lodash';
 
-let register = ({ config, db }, { body }, res) => {
-
-    if (!body) {
-        console.log("invalid...");
-        return res.json({error: "invalid request"} );
-    }
-
-
+let register = ({ body }, res) => {
+    if(_.isEmpty(body))
+        return res.status(400).send("Invalid request");
+    
+    // Try to create a user
     let user = new User();
     // TODO: this is a prototype, lets validate/assign parameters one by one.
     user.first_name = body.first_name ? body.first_name : "";
@@ -23,16 +21,14 @@ let register = ({ config, db }, { body }, res) => {
     // All validations are performed at the Model level
     user.save(err => {
         if (err) {
-            console.error(err);
-            res.json({error: "error saving user"} );
+            //console.error(err);
+            res.status(404).json({error: err.message});
         }
         else {
             console.log(user);
-            res.json({ id: user._id });
+            res.status(201).json({ id: user._id });
         }
     });
-
-
 };
 
 export { register }

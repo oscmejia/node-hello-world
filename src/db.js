@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 
-export default callback => {
+export default (config, callback) => {
 
-    let dBURL = "mongodb://localhost/helloworld-register";
+    let dBURL = config.mongoUrl;
     mongoose.connect(dBURL);
     let db = mongoose.connection;
 
