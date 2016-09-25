@@ -52,6 +52,6 @@ let UserSchema = new Schema({
     }
 });
 
-let UserModel = mongoose.model('users', UserSchema);
+let User = mongoose.model('users', UserSchema);
 
-export default { UserModel };
+export { User };

@@ -28,18 +28,25 @@ app.use(bodyParser.json({
 }));
 
 
-// Initialize db layer
+// Initialize db layer (Mongo)
 initDb(db => {
 
-    // Internal Middleware
-    app.use(middleware({ config, db }));
+    if (db !== false) {
+        // Internal Middleware
+        app.use(middleware({ config, db }));
 
-    // API Router
-    app.use('/api', api({ config, db }));
+        // API Router
+        app.use('/api', api({ config, db }));
 
-    app.server.listen(config.port);
+        // Port configuration
+        app.server.listen(config.port);
 
-    console.log('Started server on port ${app.server.address().port}');
+        console.log('Started server on port ', config.port);
+    }
+    else{
+        console.error("Fatal error. Can not connect to Mongo");
+    }
+
 });
 
 export default app;
