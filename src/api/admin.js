@@ -7,7 +7,10 @@ let listUsers = ({ body }, res) => {
             return res.status(500).send("error");
         }
         
-        res.status(200).json(users);
+        let response = {
+            data: users
+        }
+        res.status(200).json(response);
     });
 
     
