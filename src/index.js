@@ -14,15 +14,15 @@ import config from './config.json';
 let app = express();
 app.server = http.createServer(app);
 
-//app.use('/static', express.static('public'));
+// Sttatic assets
 app.use(express.static(__dirname + '/public'));
-
 
 // CORS middleware 
 app.use(cors({
     exposedHeaders: config.corsHeaders
 }));
 
+// Basic configuration
 app.use(bodyParser.json({
     limit: config.bodyLimit
 }));
