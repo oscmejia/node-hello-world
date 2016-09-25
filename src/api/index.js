@@ -1,6 +1,9 @@
-import { version } from '../../package.json';
+'use strict';
+
 import { Router } from 'express';
+import { version } from '../../package.json';
 import { register } from './register';
+import { listUsers } from './admin';
 
 
 export default (config) => {
@@ -11,6 +14,7 @@ export default (config) => {
     });
 
     api.post('/register', register);
+    api.get('/user', listUsers);
 
     api.get('*', (req, res) => {
         console.log("unsupported route (GET)", req.url );
@@ -22,7 +26,5 @@ export default (config) => {
         res.status(404).send();
     });
 
-    console.log("API!", api); 
-    
     return api;
 }
