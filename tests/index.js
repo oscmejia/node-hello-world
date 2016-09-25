@@ -14,6 +14,7 @@ var serverRootUrl = "http://localhost:" + config.port + "/" + config.apiRootPath
 
 // API Endpoints
 var apiUrlRegister = serverRootUrl + "/register";
+var apiUrlUser = serverRootUrl + "/user";
 
 describe('Setup', function () {
     it('cleanup dev database', function (done) {
@@ -194,3 +195,46 @@ describe('Register endpoint - should work', function () {
     });
 });
 
+
+describe('user endpoint - should work', function () {
+    
+    it('list 2 users', function (done) {
+        
+        var opt = {
+            url: apiUrlUser
+        };
+
+        request.get(opt,  function (error, response, body) {
+            
+            var r = JSON.parse(body).data;
+            
+            expect(response.statusCode).to.equal(200);
+
+            expect(r[0]._id).to.exist;
+            expect(r[0].first_name).to.exist;
+            expect(r[0].last_name).to.exist;
+            expect(r[0].address_1).to.exist;
+            expect(r[0].address_2).to.exist;
+            expect(r[0].city).to.exist;
+            expect(r[0].state).to.exist;
+            expect(r[0].zipcode).to.exist;
+            expect(r[0].zipcode_plus4).to.exist;
+            expect(r[0].country).to.exist;
+            expect(r[0].first_name).to.equal("Joe");
+
+            expect(r[1]._id).to.exist;
+            expect(r[1].first_name).to.exist;
+            expect(r[1].last_name).to.exist;
+            expect(r[1].address_1).to.exist;
+            expect(r[1].address_2).to.exist;
+            expect(r[1].city).to.exist;
+            expect(r[1].state).to.exist;
+            expect(r[1].zipcode).to.exist;
+            expect(r[1].zipcode_plus4).to.exist;
+            expect(r[1].country).to.exist;
+            expect(r[1].first_name).to.equal("Mary");
+            done();
+        })
+    });
+
+});
