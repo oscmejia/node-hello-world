@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+'use strict';
 
+import mongoose from 'mongoose';
 
 export default (config, callback) => {
 
-    let dBURL = config.mongoUrl;
-    mongoose.connect(dBURL);
+    mongoose.connect(config.mongoUrl);
     let db = mongoose.connection;
 
     db.on('error', (err) => {
@@ -14,12 +14,12 @@ export default (config, callback) => {
     });
 
     db.once('connected', () => {
-        console.log('Successfully connected to ' + dBURL);
+        console.log('Successfully connected to ' + config.mongoUrl);
         return callback(db);
     });
 
     db.once('disconnected', () => {
-        return console.error('Successfully disconnected from ' + dBURL);
+        return console.error('Successfully disconnected from ' + config.mongoUrl);
     });
 
     process.on('SIGINT', () => {
@@ -28,6 +28,4 @@ export default (config, callback) => {
             return process.exit(0);
         });
     });
-
-
 }

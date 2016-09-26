@@ -1,3 +1,5 @@
+'use strict';
+
 import { User } from '../models/user';
 import _ from 'lodash';
 
@@ -21,7 +23,6 @@ let register = ({ body }, res) => {
     // All validations are performed at the Model level
     user.save(err => {
         if (err) {
-            //console.error(err);
             res.status(404).json({error: err.message});
         }
         else {

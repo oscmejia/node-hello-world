@@ -1,3 +1,4 @@
+'use strict';
 
 // Modules
 import http from 'http';
