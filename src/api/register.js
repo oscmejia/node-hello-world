@@ -26,7 +26,6 @@ let register = ({ body }, res) => {
             res.status(404).json({error: err.message});
         else
             res.status(201).json({ id: user._id });
-        
     });
 };
 

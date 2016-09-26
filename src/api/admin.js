@@ -4,7 +4,7 @@ import { User } from '../models/user';
 
 let listUsers = ({ body }, res) => {
     // TODO: paginate response.
-    User.find({}, function (err, users) {
+    User.find().sort({"created_at": -1}).exec(function (err, users) {
         if (err) {
             console.error(err);
             return res.status(500).send("internal error");

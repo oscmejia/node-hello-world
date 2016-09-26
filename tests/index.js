@@ -220,7 +220,7 @@ describe('user endpoint', function () {
             expect(r[0].zipcode).to.exist;
             expect(r[0].zipcode_plus4).to.exist;
             expect(r[0].country).to.exist;
-            expect(r[0].first_name).to.equal("Joe");
+            expect(r[0].first_name).to.equal("Mary");
 
             expect(r[1]._id).to.exist;
             expect(r[1].first_name).to.exist;
@@ -232,7 +232,8 @@ describe('user endpoint', function () {
             expect(r[1].zipcode).to.exist;
             expect(r[1].zipcode_plus4).to.exist;
             expect(r[1].country).to.exist;
-            expect(r[1].first_name).to.equal("Mary");
+            expect(r[1].first_name).to.equal("Joe");
+
             done();
         })
     });

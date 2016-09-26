@@ -12,7 +12,7 @@ $.validate({
         if(registerbtn.val() !== processingStr){
             // feedback for user.
             registerbtn.toggleClass('btn-info btn-success');
-            // registerbtn.val(processingStr);
+            registerbtn.val(processingStr);
 
             doRegistration();
         }

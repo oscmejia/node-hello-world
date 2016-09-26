@@ -34,6 +34,7 @@
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "lodash": "^4.16.1",
+    "mongodb": "^2.2.10",
     "mongoose": "^4.6.1"
   },
   "devDependencies": {
