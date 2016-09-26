@@ -5,6 +5,7 @@ $(document).ready(function () {
         "ajax": "./api/user",
         "dataType": "json",
         "paging": false,
+        "ordering": false,
         buttons: [
             {
                 text: 'Reload',

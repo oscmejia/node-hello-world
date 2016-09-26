@@ -6,4 +6,4 @@ let info = (config, req, res) => {
     res.json({ version, server: config.serverName });
 };
 
-export { info}
+export { info }
