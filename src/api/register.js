@@ -22,13 +22,11 @@ let register = ({ body }, res) => {
 
     // All validations are performed at the Model level
     user.save(err => {
-        if (err) {
+        if (err)
             res.status(404).json({error: err.message});
-        }
-        else {
-            console.log(user);
+        else
             res.status(201).json({ id: user._id });
-        }
+        
     });
 };
 

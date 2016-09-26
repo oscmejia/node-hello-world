@@ -15,6 +15,9 @@ and an admin page to display registered users.
 - datatables (https://datatables.net/)
 - Bootstrap
 - Mocha/chai
+- babel-node
+- nodemon
+- request 
 
 
 
