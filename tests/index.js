@@ -196,7 +196,7 @@ describe('Register endpoint - should work', function () {
 });
 
 
-describe('user endpoint - should work', function () {
+describe('user endpoint', function () {
     
     it('list 2 users', function (done) {
         
